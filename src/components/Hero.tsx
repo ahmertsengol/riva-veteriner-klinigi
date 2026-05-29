@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const WHATSAPP_NUMBER = "905059563667";
 const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Riva+Veteriner+Kliniği&destination_place_id=ChIJsShURU-9vxQRDT8SgliSIEQ";
+  "https://www.google.com/maps/dir/?api=1&destination=36.8506439,28.2586733";
 
 export default function Hero() {
   const { t } = useLanguage();
