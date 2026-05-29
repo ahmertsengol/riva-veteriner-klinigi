@@ -4,16 +4,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const WHATSAPP_NUMBER = "905059563667";
-const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=36.8506439,28.2586733";
+import { business, whatsappUrl } from "@/lib/business";
 
 export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center bg-dark overflow-hidden">
+    <section className="relative min-h-[88svh] lg:min-h-screen flex items-center bg-dark overflow-hidden">
       {/* Background Image with Ken Burns */}
       <motion.div
         initial={{ scale: 1.15 }}
@@ -40,17 +37,7 @@ export default function Hero() {
       <div className="absolute inset-0 hero-gradient opacity-60" />
       <div className="absolute inset-0 noise-overlay" />
 
-      {/* Animated Orbs */}
-      <div
-        className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-[120px]"
-        style={{ animation: "float 8s ease-in-out infinite" }}
-      />
-      <div
-        className="absolute bottom-1/4 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"
-        style={{ animation: "float 10s ease-in-out infinite 2s" }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20 lg:pt-40 lg:pb-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-28 pb-16 lg:pt-40 lg:pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left — Text */}
           <div>
@@ -63,7 +50,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
               <span className="text-text-light/70 text-xs tracking-wider uppercase">
-                Marmaris, Muğla
+                {business.location}
               </span>
             </motion.div>
 
@@ -103,14 +90,23 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <a
-                href="#appointment"
+                href={business.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-2.5 bg-gradient-to-r from-primary to-primary-light text-white px-7 py-4 rounded-full text-base font-semibold hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02]"
               >
-                <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                {t.hero.cta}
+                <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                {t.hero.directions}
               </a>
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={business.phoneHref}
+                className="group flex items-center justify-center gap-2.5 bg-white text-dark px-7 py-4 rounded-full text-base font-semibold hover:shadow-xl hover:shadow-white/15 transition-all duration-300 hover:scale-[1.02]"
+              >
+                <Phone className="w-5 h-5 text-primary group-hover:rotate-12 transition-transform" />
+                {t.hero.call}
+              </a>
+              <a
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-2.5 bg-white/[0.08] border border-white/10 text-white px-7 py-4 rounded-full text-base font-semibold hover:bg-white/[0.14] backdrop-blur-sm transition-all duration-300"
@@ -118,34 +114,8 @@ export default function Hero() {
                 <MessageCircle className="w-5 h-5 text-secondary group-hover:scale-110 transition-transform" />
                 {t.hero.whatsapp}
               </a>
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2.5 bg-white/[0.08] border border-white/10 text-white px-7 py-4 rounded-full text-base font-semibold hover:bg-white/[0.14] backdrop-blur-sm transition-all duration-300"
-              >
-                <MapPin className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
-                {t.hero.directions}
-              </a>
             </motion.div>
           </div>
-
-          {/* Mobile Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="lg:hidden mt-8 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-white/10"
-          >
-            <Image
-              src="/images/cat-exam.jpg"
-              alt="Veteriner muayene"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 90vw, 0px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" />
-          </motion.div>
 
           {/* Right — Floating Image Cards (desktop only) */}
           <div className="hidden lg:flex justify-center relative">

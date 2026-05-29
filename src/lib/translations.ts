@@ -13,8 +13,9 @@ export const translations = {
     hero: {
       title: "Riva Veteriner Kliniği",
       subtitle:
-        "Marmaris'te dostlarınız için güvenilir ve modern veteriner hizmeti",
+        "Marmaris merkezde veteriner hizmeti. Arayın, WhatsApp'tan yazın veya hemen yol tarifi alın.",
       cta: "Randevu Al",
+      call: "Hemen Ara",
       whatsapp: "WhatsApp'tan Yaz",
       directions: "Yol Tarifi Al",
     },
@@ -56,6 +57,7 @@ export const translations = {
           desc: "Düzenli kontroller ve önleyici tedbirlerle evcil hayvanınızın sağlığını koruma altına alıyoruz.",
         },
       ],
+      moreTitle: "Diğer hizmetler",
     },
     about: {
       title: "Kliniğimiz Hakkında",
@@ -135,6 +137,7 @@ export const translations = {
       hoursSunday: "Pazar: 13:00 - 19:00",
       instagram: "Instagram",
       whatsapp: "WhatsApp",
+      callBtn: "Ara",
       directionsBtn: "Yol Tarifi Al",
       whatsappBtn: "WhatsApp ile Ulaş",
     },
@@ -158,8 +161,9 @@ export const translations = {
     hero: {
       title: "Riva Veterinary Clinic",
       subtitle:
-        "Trusted and modern veterinary care for your companions in Marmaris",
+        "Veterinary care in central Marmaris. Call, message us, or get directions now.",
       cta: "Book Appointment",
+      call: "Call Now",
       whatsapp: "Message on WhatsApp",
       directions: "Get Directions",
     },
@@ -201,6 +205,7 @@ export const translations = {
           desc: "Safeguarding your pet's health with regular check-ups and preventive measures.",
         },
       ],
+      moreTitle: "Other services",
     },
     about: {
       title: "About Our Clinic",
@@ -280,6 +285,7 @@ export const translations = {
       hoursSunday: "Sunday: 13:00 - 19:00",
       instagram: "Instagram",
       whatsapp: "WhatsApp",
+      callBtn: "Call",
       directionsBtn: "Get Directions",
       whatsappBtn: "Contact via WhatsApp",
     },

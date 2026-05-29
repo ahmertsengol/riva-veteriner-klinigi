@@ -2,8 +2,7 @@
 
 import { MapPin, Phone, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const INSTAGRAM_URL = "https://www.instagram.com/riva.veterinerklinigi";
+import { business } from "@/lib/business";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -12,7 +11,6 @@ export default function Footer() {
   const links = [
     { href: "#about", label: t.nav.about },
     { href: "#services", label: t.nav.services },
-    { href: "#clinic", label: t.nav.clinic },
     { href: "#faq", label: t.nav.faq },
     { href: "#contact", label: t.nav.contact },
   ];
@@ -72,24 +70,24 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-primary-light mt-0.5 flex-shrink-0" />
                 <span className="text-text-muted text-sm">
-                  {t.contact.phoneValue}
+                  {business.phoneDisplay}
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-primary-light mt-0.5 flex-shrink-0" />
                 <span className="text-text-muted text-sm">
-                  {t.contact.addressValue}
+                  {business.address}
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Globe className="w-4 h-4 text-primary-light mt-0.5 flex-shrink-0" />
                 <a
-                  href={INSTAGRAM_URL}
+                  href={business.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-text-muted text-sm hover:text-primary-lighter transition-colors"
                 >
-                  @riva.veterinerklinigi
+                  {business.instagramHandle}
                 </a>
               </li>
             </ul>

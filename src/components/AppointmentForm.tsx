@@ -5,9 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const WHATSAPP_NUMBER = "905059563667";
-const EMAIL_ADDRESS = "info.rivaveteriner@gmail.com";
+import { business } from "@/lib/business";
 
 export default function AppointmentForm() {
   const { t, locale } = useLanguage();
@@ -45,7 +43,7 @@ export default function AppointmentForm() {
 
   const handleWhatsApp = () => {
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage()}`,
+      `https://wa.me/${business.whatsappNumber}?text=${buildWhatsAppMessage()}`,
       "_blank"
     );
   };
@@ -57,7 +55,7 @@ export default function AppointmentForm() {
         : `Appointment Request - ${form.name}`
     );
     const body = buildWhatsAppMessage();
-    window.open(`mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`);
+    window.open(`mailto:${business.email}?subject=${subject}&body=${body}`);
   };
 
   const inputClass =
@@ -67,7 +65,7 @@ export default function AppointmentForm() {
   return (
     <section
       id="appointment"
-      className="relative py-24 lg:py-32 bg-dark overflow-hidden"
+      className="relative py-16 lg:py-24 bg-dark overflow-hidden"
     >
       {/* Background flatlay image */}
       <div className="absolute inset-0">

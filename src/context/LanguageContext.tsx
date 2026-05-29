@@ -17,8 +17,14 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("tr");
+export function LanguageProvider({
+  children,
+  initialLocale = "tr",
+}: {
+  children: ReactNode;
+  initialLocale?: Locale;
+}) {
+  const [locale, setLocale] = useState<Locale>(initialLocale);
 
   const toggleLocale = useCallback(() => {
     setLocale((prev) => (prev === "tr" ? "en" : "tr"));

@@ -7,9 +7,10 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function About() {
   const { t } = useLanguage();
+  const keyFeatures = t.about.features.slice(0, 3);
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-white overflow-hidden">
+    <section id="about" className="py-16 lg:py-24 bg-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left — Content */}
@@ -26,14 +27,13 @@ export default function About() {
               {t.about.subtitle}
             </p>
 
-            <div className="space-y-5 text-text-secondary leading-relaxed">
+            <div className="space-y-4 text-text-secondary leading-relaxed">
               <p>{t.about.p1}</p>
               <p>{t.about.p2}</p>
-              <p>{t.about.p3}</p>
             </div>
 
             <ul className="mt-8 space-y-3">
-              {t.about.features.map((feature, i) => (
+              {keyFeatures.map((feature, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -16 }}
@@ -75,23 +75,6 @@ export default function About() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </motion.div>
-
-              {/* Secondary Image — overlapping */}
-              <motion.div
-                initial={{ opacity: 0, y: 30, x: -20 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-8 -left-4 sm:-left-8 w-36 sm:w-44 h-44 sm:h-52 rounded-xl overflow-hidden shadow-lg border-4 border-white"
-              >
-                <Image
-                  src="/images/puppy-vaccine.jpg"
-                  alt="Yavru köpek bakımı"
-                  fill
-                  className="object-cover"
-                  sizes="176px"
                 />
               </motion.div>
 

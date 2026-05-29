@@ -1,32 +1,31 @@
 "use client";
 
-import { LanguageProvider } from "@/context/LanguageContext";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import MapContact from "@/components/MapContact";
 import About from "@/components/About";
+import Services from "@/components/Services";
 import AppointmentForm from "@/components/AppointmentForm";
 import FAQ from "@/components/FAQ";
-import MapContact from "@/components/MapContact";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import BottomActionBar from "@/components/BottomActionBar";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/context/LanguageContext";
+import type { Locale } from "@/lib/translations";
 
-export default function Home() {
+export default function SitePage({ locale }: { locale: Locale }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLocale={locale}>
       <Header />
       <main>
         <Hero />
-        <section id="clinic">
-          <About />
-        </section>
+        <MapContact />
+        <About />
         <Services />
         <AppointmentForm />
         <FAQ />
-        <MapContact />
       </main>
       <Footer />
-      <WhatsAppButton />
+      <BottomActionBar />
     </LanguageProvider>
   );
 }

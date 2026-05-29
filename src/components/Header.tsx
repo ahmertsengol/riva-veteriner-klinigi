@@ -2,23 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const WHATSAPP_NUMBER = "905059563667";
+import { business, localeRoutes, whatsappUrl } from "@/lib/business";
 
 const navLinks = [
   { href: "#about", key: "about" as const },
   { href: "#services", key: "services" as const },
-  { href: "#clinic", key: "clinic" as const },
   { href: "#faq", key: "faq" as const },
   { href: "#contact", key: "contact" as const },
 ];
 
 export default function Header() {
-  const { locale, t, toggleLocale } = useLanguage();
+  const { locale, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const alternateLocaleHref = locale === "tr" ? localeRoutes.en : localeRoutes.tr;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -71,8 +70,8 @@ export default function Header() {
         {/* Right Actions */}
         <div className="hidden lg:flex items-center gap-4">
           {/* Language Toggle */}
-          <button
-            onClick={toggleLocale}
+          <a
+            href={alternateLocaleHref}
             className="relative flex items-center bg-white/[0.06] rounded-full p-0.5 border border-white/10"
             aria-label="Toggle language"
           >
@@ -94,28 +93,35 @@ export default function Header() {
             >
               EN
             </span>
-          </button>
+          </a>
 
           {/* CTA */}
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            href={business.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
           >
+            <MapPin className="w-4 h-4" />
+            {t.hero.directions}
+          </a>
+          <a
+            href={business.phoneHref}
+            className="flex items-center gap-2 bg-white/[0.06] border border-white/10 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/[0.12] transition-all duration-300"
+          >
             <Phone className="w-4 h-4" />
-            {t.nav.appointment}
+            {t.contact.callBtn}
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex lg:hidden items-center gap-3">
-          <button
-            onClick={toggleLocale}
+          <a
+            href={alternateLocaleHref}
             className="text-xs font-bold text-primary-lighter bg-white/[0.06] border border-white/10 px-3 py-1.5 rounded-full"
           >
             {locale === "tr" ? "EN" : "TR"}
-          </button>
+          </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-white p-2"
@@ -148,15 +154,35 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={business.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 className="mt-4 flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3.5 rounded-full text-base font-semibold"
               >
-                <Phone className="w-5 h-5" />
-                {t.nav.appointment}
+                <MapPin className="w-5 h-5" />
+                {t.hero.directions}
               </a>
+              <div className="grid grid-cols-2 gap-3 pt-3">
+                <a
+                  href={business.phoneHref}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 bg-white/[0.06] border border-white/10 text-white px-4 py-3 rounded-full text-sm font-semibold"
+                >
+                  <Phone className="w-4 h-4" />
+                  {t.contact.callBtn}
+                </a>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 bg-white/[0.06] border border-white/10 text-white px-4 py-3 rounded-full text-sm font-semibold"
+                >
+                  <MessageCircle className="w-4 h-4 text-secondary" />
+                  WhatsApp
+                </a>
+              </div>
             </nav>
           </motion.div>
         )}

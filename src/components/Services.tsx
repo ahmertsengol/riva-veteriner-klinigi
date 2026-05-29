@@ -26,9 +26,11 @@ const icons = [
 
 export default function Services() {
   const { t } = useLanguage();
+  const primaryServices = t.services.items.slice(0, 4);
+  const secondaryServices = t.services.items.slice(4);
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-light">
+    <section id="services" className="py-16 lg:py-24 bg-light">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -36,7 +38,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 lg:mb-14"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             {t.services.title}
@@ -48,7 +50,7 @@ export default function Services() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {t.services.items.map((item, i) => {
+          {primaryServices.map((item, i) => {
             const Icon = icons[i];
             return (
               <motion.div
@@ -72,6 +74,28 @@ export default function Services() {
             );
           })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-8 bg-white rounded-2xl border border-gray-100 p-5 sm:p-6"
+        >
+          <p className="text-text-primary font-semibold mb-4">
+            {t.services.moreTitle}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {secondaryServices.map((item) => (
+              <span
+                key={item.title}
+                className="rounded-full bg-light-warm px-4 py-2 text-sm font-medium text-text-secondary"
+              >
+                {item.title}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

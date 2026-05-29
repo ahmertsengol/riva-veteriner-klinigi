@@ -10,13 +10,7 @@ import {
   Navigation,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const WHATSAPP_NUMBER = "905059563667";
-const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=36.8506439,28.2586733";
-const MAPS_EMBED =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.658922182621!2d28.2586733!3d36.8506439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bfbd4f494428b1%3A0x4420925883123f0d!2sRiva%20Veteriner%20Klini%C4%9Fi!5e0!3m2!1str!2str!4v1780085858065!5m2!1str!2str";
-const INSTAGRAM_URL = "https://www.instagram.com/riva.veterinerklinigi";
+import { business, whatsappUrl } from "@/lib/business";
 
 export default function MapContact() {
   const { t } = useLanguage();
@@ -25,13 +19,13 @@ export default function MapContact() {
     {
       icon: MapPin,
       label: t.contact.address,
-      value: t.contact.addressValue,
+      value: business.address,
     },
     {
       icon: Phone,
       label: t.contact.phone,
-      value: t.contact.phoneValue,
-      href: "tel:+905059563667",
+      value: business.phoneDisplay,
+      href: business.phoneHref,
     },
     {
       icon: Clock,
@@ -42,20 +36,20 @@ export default function MapContact() {
     {
       icon: Globe,
       label: t.contact.instagram,
-      value: "@riva.veterinerklinigi",
-      href: INSTAGRAM_URL,
+      value: business.instagramHandle,
+      href: business.instagramUrl,
     },
   ];
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-white">
+    <section id="contact" className="py-16 lg:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 lg:mb-14"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             {t.contact.title}
@@ -65,17 +59,17 @@ export default function MapContact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
           {/* Map */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 rounded-2xl overflow-hidden border border-gray-100 shadow-sm"
+            className="order-2 lg:order-1 lg:col-span-3 rounded-2xl overflow-hidden border border-gray-100 shadow-sm"
           >
             <iframe
-              src={MAPS_EMBED}
+              src={business.mapsEmbedUrl}
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: 400 }}
@@ -92,7 +86,7 @@ export default function MapContact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2"
+            className="order-1 lg:order-2 lg:col-span-2"
           >
             <div className="bg-dark rounded-2xl p-8 h-full flex flex-col">
               {/* Card Header */}
@@ -102,9 +96,9 @@ export default function MapContact() {
                 </div>
                 <div>
                   <h3 className="text-white font-display font-semibold">
-                    Riva Veteriner
+                    {business.shortName}
                   </h3>
-                  <p className="text-text-muted text-xs">Marmaris, Muğla</p>
+                  <p className="text-text-muted text-xs">{business.location}</p>
                 </div>
               </div>
 
@@ -136,8 +130,12 @@ export default function MapContact() {
                     <a
                       key={i}
                       href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        item.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="block"
                     >
                       {content}
@@ -151,7 +149,7 @@ export default function MapContact() {
               {/* Action Buttons */}
               <div className="mt-8 space-y-3">
                 <a
-                  href={MAPS_URL}
+                  href={business.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-primary to-primary-light text-white px-5 py-3.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
@@ -160,10 +158,17 @@ export default function MapContact() {
                   {t.contact.directionsBtn}
                 </a>
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  href={business.phoneHref}
+                  className="flex items-center justify-center gap-2 w-full bg-white text-dark px-5 py-3.5 rounded-full text-sm font-semibold hover:bg-text-light transition-all duration-300"
+                >
+                  <Phone className="w-4 h-4 text-primary" />
+                  {t.contact.callBtn}
+                </a>
+                <a
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-white/[0.06] border border-white/10 text-white px-5 py-3.5 rounded-full text-sm font-semibold hover:bg-white/[0.1] transition-all duration-300"
+                  className="hidden sm:flex items-center justify-center gap-2 w-full bg-white/[0.06] border border-white/10 text-white px-5 py-3.5 rounded-full text-sm font-semibold hover:bg-white/[0.1] transition-all duration-300"
                 >
                   <MessageCircle className="w-4 h-4 text-secondary" />
                   {t.contact.whatsappBtn}

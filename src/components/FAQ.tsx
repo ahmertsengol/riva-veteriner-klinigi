@@ -51,10 +51,11 @@ function FAQItem({
 
 export default function FAQ() {
   const { t } = useLanguage();
+  const items = t.faq.items.slice(0, 4);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-light overflow-hidden">
+    <section id="faq" className="py-16 lg:py-24 bg-light overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -78,7 +79,7 @@ export default function FAQ() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 px-6 sm:px-8"
           >
-            {t.faq.items.map((item, i) => (
+            {items.map((item, i) => (
               <FAQItem
                 key={i}
                 question={item.q}
@@ -119,7 +120,7 @@ export default function FAQ() {
               </motion.div>
               <div className="mt-4 text-center">
                 <p className="text-text-muted text-sm italic">
-                  {t.faq.items[0].q.replace("?", "")}... 🐾
+                  {items[0].q.replace("?", "")}...
                 </p>
               </div>
             </div>
