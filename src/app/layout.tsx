@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rivaveteriner.com"),
+  metadataBase: new URL("https://riva-veteriner-klinigi.vercel.app"),
   title: "Riva Veteriner Kliniği | Marmaris Veteriner - Modern Veteriner Hizmeti",
   description:
     "Marmaris'te güvenilir ve modern veteriner kliniği. Genel muayene, aşılama, cerrahi, acil veteriner hizmeti. Riva Veteriner Kliniği - Marmaris, Muğla.",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Riva Veteriner Kliniği | Marmaris Veteriner",
     description:
       "Marmaris'te dostlarınız için güvenilir ve modern veteriner hizmeti. Genel muayene, aşılama, cerrahi ve acil veteriner.",
-    url: "https://rivaveteriner.com",
+    url: "https://riva-veteriner-klinigi.vercel.app",
     siteName: "Riva Veteriner Kliniği",
     locale: "tr_TR",
     alternateLocale: "en_US",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://rivaveteriner.com",
+    canonical: "https://riva-veteriner-klinigi.vercel.app",
   },
 };
 
@@ -74,18 +74,20 @@ const structuredData = JSON.stringify({
   alternateName: "Riva Veterinary Clinic",
   description:
     "Marmaris'te güvenilir ve modern veteriner kliniği. Genel muayene, aşılama, cerrahi, acil veteriner hizmeti.",
-  url: "https://rivaveteriner.com",
-  telephone: "+90XXXXXXXXXX",
+  url: "https://riva-veteriner-klinigi.vercel.app",
+  telephone: "+905059563667",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Çıldır Mah. 153. Sk. No:20/A",
     addressLocality: "Marmaris",
+    postalCode: "48700",
     addressRegion: "Muğla",
     addressCountry: "TR",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "36.8507",
-    longitude: "28.2741",
+    latitude: "36.8506439",
+    longitude: "28.2586733",
   },
   openingHoursSpecification: [
     {
@@ -99,6 +101,12 @@ const structuredData = JSON.stringify({
         "Saturday",
       ],
       opens: "09:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "13:00",
       closes: "19:00",
     },
   ],
@@ -117,8 +125,8 @@ const structuredData = JSON.stringify({
     "@type": "City",
     name: "Marmaris",
   },
-  sameAs: ["https://www.instagram.com/rivaveteriner"],
-  image: "https://rivaveteriner.com/og-image.jpg",
+  sameAs: ["https://www.instagram.com/riva.veterinerklinigi"],
+  image: "https://riva-veteriner-klinigi.vercel.app/og-image.jpg",
 });
 
 export default function RootLayout({

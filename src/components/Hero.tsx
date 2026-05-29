@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const WHATSAPP_NUMBER = "90XXXXXXXXXX";
+const WHATSAPP_NUMBER = "905059563667";
 const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Marmaris+Muğla+Turkey";
+  "https://www.google.com/maps/dir/?api=1&destination=Riva+Veteriner+Kliniği&destination_place_id=ChIJsShURU-9vxQRDT8SgliSIEQ";
 
 export default function Hero() {
   const { t } = useLanguage();

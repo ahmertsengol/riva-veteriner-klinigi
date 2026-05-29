@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const WHATSAPP_NUMBER = "90XXXXXXXXXX";
+const WHATSAPP_NUMBER = "905059563667";
 
 const navLinks = [
   { href: "#about", key: "about" as const },

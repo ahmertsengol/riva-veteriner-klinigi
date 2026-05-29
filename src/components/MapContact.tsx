@@ -11,12 +11,12 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const WHATSAPP_NUMBER = "90XXXXXXXXXX";
+const WHATSAPP_NUMBER = "905059563667";
 const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Marmaris+Muğla+Turkey";
+  "https://www.google.com/maps/dir/?api=1&destination=Riva+Veteriner+Kliniği&destination_place_id=ChIJsShURU-9vxQRDT8SgliSIEQ";
 const MAPS_EMBED =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25600!2d28.2741!3d36.8507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c11be3f9edc8d1%3A0x4a8bfe5c85c38b5e!2sMarmaris%2C%20Mu%C4%9Fla!5e0!3m2!1sen!2str!4v1";
-const INSTAGRAM_URL = "https://www.instagram.com/rivaveteriner";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.658922182621!2d28.2586733!3d36.8506439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bfbd4f494428b1%3A0x4420925883123f0d!2sRiva%20Veteriner%20Klini%C4%9Fi!5e0!3m2!1str!2str!4v1780085858065!5m2!1str!2str";
+const INSTAGRAM_URL = "https://www.instagram.com/riva.veterinerklinigi";
 
 export default function MapContact() {
   const { t } = useLanguage();
@@ -31,7 +31,7 @@ export default function MapContact() {
       icon: Phone,
       label: t.contact.phone,
       value: t.contact.phoneValue,
-      href: `tel:+90XXXXXXXXXX`,
+      href: "tel:+905059563667",
     },
     {
       icon: Clock,
@@ -42,7 +42,7 @@ export default function MapContact() {
     {
       icon: Globe,
       label: t.contact.instagram,
-      value: "@rivaveteriner",
+      value: "@riva.veterinerklinigi",
       href: INSTAGRAM_URL,
     },
   ];

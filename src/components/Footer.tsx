@@ -3,7 +3,7 @@
 import { MapPin, Phone, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const INSTAGRAM_URL = "https://www.instagram.com/rivaveteriner";
+const INSTAGRAM_URL = "https://www.instagram.com/riva.veterinerklinigi";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -89,7 +89,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-text-muted text-sm hover:text-primary-lighter transition-colors"
                 >
-                  @rivaveteriner
+                  @riva.veterinerklinigi
                 </a>
               </li>
             </ul>

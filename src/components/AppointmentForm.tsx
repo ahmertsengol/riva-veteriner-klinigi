@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { MessageCircle, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const WHATSAPP_NUMBER = "90XXXXXXXXXX";
-const EMAIL_ADDRESS = "info@rivaveteriner.com";
+const WHATSAPP_NUMBER = "905059563667";
+const EMAIL_ADDRESS = "info.rivaveteriner@gmail.com";
 
 export default function AppointmentForm() {
   const { t, locale } = useLanguage();
